@@ -3,6 +3,7 @@
   <head>
     <title>Ambazonian Genocide Watch</title> <!-- TODO: come up with a better name? -->
     <link rel='stylesheet' href='init.css' />
+    <script src='browse.js'></script>
   </head>
   <body>
     <div id='nav' class='menu-bar'>
@@ -10,7 +11,19 @@
       <a id='nav_about' href='about.html'>About</a>
       <a id='nav_browse' class='active'>Browse</a>
     </div>
-    <div style='padding:1rem;'></div>
-    <p>Content goes here.</p>
+    <div style='padding:1.5rem;'></div>
+    <select onchange="change_province(this.value)">
+      <option value="Show all provinces">Show all provinces</option>
+      <script type='text/javascript'>generate_dropdown();</script>
+    </select>
+    <br>
+    <img id='map' src='ambazonia_provinces.jpg' usemap='#bmap' />
+    <map name='bmap'>
+      <script>generate_map();</script>
+    </map>
+    <form action='results.php' action='get'>
+      <input type="hidden" name="province" value="all" id="selector" />
+      <input type='submit' value='View Documents' />
+    </form>
   </body>
 </html>
