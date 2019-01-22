@@ -43,6 +43,20 @@ img {
   flex-direction: column;
 }
 
-p, h4, h1 {
+p, h1, h3, h5 {
     font-family: 'Montserrat', sans-serif;
+}
+
+h3 {
+    font-color: red;
+}
+
+// COUNTER
+.wrapper {
+    text-align: center;
+}
+
+.button {
+    position: absolute;
+    top: 50%;
 }
