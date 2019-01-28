@@ -1,4 +1,3 @@
-
 img {
   max-width: 100vw;
   max-height: 80vh;
@@ -7,26 +6,6 @@ img {
   margin-left: auto;
   margin-right: auto;
   display: block;
-}
-
-.menu-bar {
-  width: 100%;
-  background-color: grey;
-  position: fixed;
-  top: 0;
-  width: 100%;
-}
-
-.menu-bar a {
-  float: left;
-  padding: 12px;
-  color: white;
-  text-decoration: none;
-  font-size: 18px;
-}
-
-.active {
-  background-color: red;
 }
 
 .frame {

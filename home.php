@@ -1,8 +1,13 @@
+<?php
+$page = 'home';
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
         <title>Ambazonian Genocide Watch</title> <!-- TODO: come up with a better name? -->
         <link rel='stylesheet' href='init.css' />
+        <?php include 'header.php'; ?>
 
         <!-- Latest compiled and minified Bootstrap CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -15,11 +20,6 @@
 
     </head>
     <body>
-        <div id='nav' class='menu-bar'>
-            <a id='nav_home' class='active'>Home</a>
-            <a id='nav_about' href='about.html'>About</a>
-            <a id='nav_browse' href='browse.html'>Browse</a>
-        </div>
         <div style="padding-top:9rem;" class="container">
             <button type="button" class="btn btn-danger" style="font-family: 'Roboto', sans-serif; margin-bottom: 10px;">Death Count : 10348</button>
 
