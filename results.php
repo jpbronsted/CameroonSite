@@ -7,29 +7,77 @@ else
 {
     $province = 'all';
 }
+$type = isset($_REQUEST['type']) ? $_REQUEST['type'] : 'all';
+
+// Replace this declaration with a database lookup
+$counties = array(
+  "Boyo",
+  "Bui",
+  "Donga-Mantung",
+  "Fako",
+  "Lebialem",
+  "Manyu",
+  "Meme",
+  "Menchum",
+  "Mezam",
+  "Momo",
+  "Ndian",
+  "Ngo-Ketunjia"
+);
+
+// Replace this declaration with a database lookup
+$doctypes = array(
+  "All",
+  "Photo",
+  "Video",
+  "Audio"
+);
 ?>
 
 <!DOCTYPE html>
 <html>
     <head>
         <script src='results.js'></script>
-        <title>Ambazonian Genocide Watch</title> <!-- TODO: come up with a better name? -->
-        <link rel='stylesheet' href='init.css' />
+        <title>Ambazonian Genocide Watch</title>
         <?php include 'header.php'; ?>
     </head>
     <body>
-        <div style='padding:1rem;'></div>
-        <div style='padding:1.5rem;'></div>
-        <select>
-            <option value=-1>All</option>
-            <option value=1>Photos</option>
-            <option value=2>Videos</option>
-            <option value=3>Audio Recordings</option>
-        </select>
-        <select onchange="change_province(this.value)">
-            <option value="Show all provinces">Show all provinces</option>
-            <script type='text/javascript'>province_dropdown();</script>
-        </select>
-        <p>The province that was selected is: <?php echo $province; ?>.</p>
-      </body>
+        <div class='container'>
+            <form action='results.php' method='get'>
+                <input type="hidden" value="<?php echo $province; ?>"
+                    name="province" id="prov-selector" />
+                <input type="hidden" value="<?php echo $type; ?>"
+                    name="type" id="type-selector" />
+                <select onchange="submit_form(value, 'type-selector',
+                    this.form);">
+<?php
+foreach($doctypes as $doctype) {
+  if ($doctype === $type) {
+    echo "<option selected ";
+  } else {
+    echo "<option ";
+  }
+  echo "value=\"" . $doctype . "\">" . $doctype . "</option>";
+}
+?>
+                </select>
+                <select onchange="submit_form(value, 'prov-selector',
+                    this.form);">
+                    <option value="all">Show all provinces</option>
+<?php
+foreach($counties as $name) {
+  if ($name === $province) {
+    echo "<option selected ";
+  } else {
+    echo "<option ";
+  }
+  echo "value=\"" . $name . "\">" . $name . "</option>";
+}
+?>
+                </select>
+            </form>
+            <p>The province that was selected is: <?php echo $province; ?>.</p>
+            <p>The type that was selected is: <?php echo $type; ?>.</p>
+        </div>
+    </body>
 </html>
