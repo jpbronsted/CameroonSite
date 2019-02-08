@@ -7,7 +7,7 @@ use Google\Cloud\Firestore\FirestoreClient;
 
 // Generate database/storage references
 $firestore = new FirestoreClient([
-  'keyFilePath' => './CameroonSite-09776fca4fda.json'
+  'keyFilePath' => './auth.json'
 ]);
 $counties_ref = $firestore->collection('counties');
 
