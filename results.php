@@ -1,4 +1,17 @@
 <?php
+if (!extension_loaded('grpc')) {
+  dl('grpc.so');
+}
+require __DIR__ . '/vendor/autoload.php';
+use Google\Cloud\Firestore\FirestoreClient;
+
+// Generate database/storage references
+$firestore = new FirestoreClient([
+  'keyFilePath' => './auth.json'
+]);
+$counties_ref = $firestore->collection('counties');
+
+// Generate page-level attributes
 if( isset( $_REQUEST['province'] ) )
 {
     $province = $_REQUEST['province'];
@@ -9,21 +22,11 @@ else
 }
 $type = isset($_REQUEST['type']) ? $_REQUEST['type'] : 'all';
 
-// Replace this declaration with a database lookup
-$counties = array(
-  "Boyo",
-  "Bui",
-  "Donga-Mantung",
-  "Fako",
-  "Lebialem",
-  "Manyu",
-  "Meme",
-  "Menchum",
-  "Mezam",
-  "Momo",
-  "Ndian",
-  "Ngo-Ketunjia"
-);
+// Get the list of counties from the database
+$counties = [];
+foreach($counties_ref->documents() as $document) {
+  array_push($counties, $document->id());
+}
 
 // Replace this declaration with a database lookup
 $doctypes = array(
