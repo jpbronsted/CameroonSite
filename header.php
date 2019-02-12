@@ -35,9 +35,9 @@ if( !isset( $page ) )
                     <a href='browse.php' class="<?php echo $page === 'browse'
                         ? 'active' : '';?>">Browse</a>
                     <div class='dropdown-content'>
-                        <a href='results.php?province=all&type=Photo'>Photos</a>
-                        <a href='results.php?province=all&type=Video'>Videos</a>
-                        <a href='results.php?province=all&type=Audio'>Audio</a>
+                        <a href='results.php?province=all&type=Photos'>Photos</a>
+                        <a href='results.php?province=all&type=Videos'>Videos</a>
+                        <a href='results.php?province=all&type=Audio+Recordings'>Audio</a>
                     </div>
                 </li>
             </ul>
