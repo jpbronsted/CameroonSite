@@ -22,13 +22,15 @@ function initialize(){
 function get_documents(doctype, province){
     var url = 'counties';
     var documents_array = [];
-    var doc_url_array = [];
+    var docRef = db.collection(url);
 
     if(province !== 'all') {
         url += '/'+province;
+        docRef = db.doc(url);
+    } else {
+        //TODO
     }
 
-    var docRef = db.doc(url);
 
     docRef.get().then( function(doc) {
         if( doctype !== 'Show All Documents') {
@@ -36,56 +38,50 @@ function get_documents(doctype, province){
                 doctype = 'Recordings';
             }
             documents_array = doc.get(doctype);
-            documents_array.forEach(function(document) {
-               storage_ref.child(document).getDownloadURL().then(function(url) {
-                 doc_url_array.push(url);
-                 document.getElementById('documents').innerHTML = doc_url_array[0];
-                 var xhr = new XMLHttpRequest();
-                 xhr.responseType = 'blob';
-                 xhr.onload = function(event) {
-                   var blob = xhr.response;
-                 };
-                 xhr.open('GET', url);
-                 xhr.send();
+            documents_array.forEach(function(single_doc) {
+                storage_ref.child(single_doc).getDownloadURL().then(function(url) {
+                    var table = document.getElementsByTagName('tbody')[0];
+                    var row = table.insertRow(0);
+                    var link = document.createElement('a');
+                    var item = document.createElement('img');
 
-                 document.getElementById('myimg').src = url;
+                    item.src = url;
+                    link.href = item;
+                    link.innerHTML = 'View Document';
+
+                    row.appendChild(link);
+                    row.appendChild(item);
                }).catch(function(error) {
-                 // Handle any errors
+                 console.log(error);
                });
             });
         } else {
             documents_array = doc.get('Photos');
             Array.prototype.push.apply(documents_array, doc.get('Videos'));
             Array.prototype.push.apply(documents_array, doc.get('Recordings'));
+
+            documents_array.forEach(function(single_doc) {
+                storage_ref.child(single_doc).getDownloadURL().then(function(url) {
+                    var table = document.getElementsByTagName('tbody')[0];
+                    var row = table.insertRow(0);
+                    var link = document.createElement('a');
+                    var item = document.createElement('img');
+
+                    link.href = url;
+                    link.innerHTML = 'View Document';
+                    item.src = url;
+
+                    row.appendChild(link);
+                    row.appendChild(item);
+               }).catch(function(error) {
+                 console.log(error);
+               });
+            });
         }
     })
     .catch(function(error) {
         console.log("Error getting documents: ", error);
     });
-
-
-    if(doctype === 'Photos') {
-        url += 'Photos';
-
-        if(province !== 'all') {
-            url += '/' + province;
-        }
-    } else if(doctype === 'Videos') {
-        url += 'Videos';
-
-        if(province !== 'all') {
-            url += '/' + province;
-        }
-    } else if(doctype === 'Audio Recordings') {
-        url += 'Recordings';
-
-        if(province !== 'all') {
-            url += '/' + province;
-        }
-    }
-}
-
-function display_documents() {
 }
 
 function submit_form(name, id, form) {

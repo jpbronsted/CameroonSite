@@ -82,8 +82,10 @@ foreach($counties as $name) {
             </form>
             <p>The province that was selected is: <?php echo $province; ?>.</p>
             <p>The type that was selected is: <?php echo $type; ?>.</p>
-            <p id='documents'></p>
-            <img id='myimg' src='' alt=''>
+            <table id='document_table'>
+                <thead></thead>
+                <tbody></tbody>
+            </table>
         </div>
     </body>
 </html>
