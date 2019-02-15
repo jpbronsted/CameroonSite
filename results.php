@@ -28,30 +28,31 @@ foreach($counties_ref->documents() as $document) {
   array_push($counties, $document->id());
 }
 
-// Replace this declaration with a database lookup
-$doctypes = array(
-  "All",
-  "Photo",
-  "Video",
-  "Audio"
-);
+$doctypes_ref = $firestore->collection('doctypes');
+
+$doctypes = ["Show All Documents"];
+foreach($doctypes_ref->documents() as $document) {
+  array_push($doctypes, $document->id());
+}
+
 ?>
 
 <!DOCTYPE html>
 <html>
     <head>
+        <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase.js"></script>
         <script src='results.js'></script>
         <title>Ambazonian Genocide Watch</title>
         <?php include 'header.php'; ?>
     </head>
-    <body>
+    <body onload=initialize()>
         <div class='container'>
             <form action='results.php' method='get'>
                 <input type="hidden" value="<?php echo $province; ?>"
                     name="province" id="prov-selector" />
                 <input type="hidden" value="<?php echo $type; ?>"
                     name="type" id="type-selector" />
-                <select onchange="submit_form(value, 'type-selector',
+                <select id='doctype' onchange="submit_form(value, 'type-selector',
                     this.form);">
 <?php
 foreach($doctypes as $doctype) {
@@ -64,7 +65,7 @@ foreach($doctypes as $doctype) {
 }
 ?>
                 </select>
-                <select onchange="submit_form(value, 'prov-selector',
+                <select id='province' onchange="submit_form(value, 'prov-selector',
                     this.form);">
                     <option value="all">Show all provinces</option>
 <?php
@@ -81,6 +82,10 @@ foreach($counties as $name) {
             </form>
             <p>The province that was selected is: <?php echo $province; ?>.</p>
             <p>The type that was selected is: <?php echo $type; ?>.</p>
+            <table id='document_table'>
+                <thead></thead>
+                <tbody></tbody>
+            </table>
         </div>
     </body>
 </html>
