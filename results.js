@@ -35,22 +35,45 @@ function get_documents(doctype, province){
     docRef.get().then( function(doc) {
         if( doctype !== 'Show All Documents') {
             if(doctype === 'Audio Recordings'){
-                doctype = 'Recordings';
+                doctype = 'Audio';
             }
             documents_array = doc.get(doctype);
             documents_array.forEach(function(single_doc) {
                 storage_ref.child(single_doc).getDownloadURL().then(function(url) {
-                    var table = document.getElementsByTagName('tbody')[0];
-                    var row = table.insertRow(0);
+                    var body = document.getElementsByTagName('body')[0];
+                    var figure = document.createElement('figure');
+                    var caption = document.createElement('figcaption');
                     var link = document.createElement('a');
-                    var item = document.createElement('img');
+                    var item = null;
+                    var title = document.createElement('b');
+                    var url_string = decodeURIComponent(url);
+
+                    if(doctype === 'Photos') {
+                        item = document.createElement('img');
+
+                    } else if(doctype === 'Videos') {
+                        item = document.createElement('video');
+                        item.innerHTML = 'Please switch your browser to Chrome or Firefox';
+                        item.controls = true;
+                    } else if(doctype === 'Audio') {
+                        item = document.createElement('audio');
+                        item.innerHTML = 'Please switch your browser to Chrome or Firefox';
+                        item.controls = true;
+                    }
 
                     item.src = url;
-                    link.href = item;
+                    link.href = url;
                     link.innerHTML = 'View Document';
+                    title.innerHTML = url_string.substring(url_string.lastIndexOf('/') + 1, url_string.lastIndexOf('.'));
+                    title.innerHTML += '\t';
 
-                    row.appendChild(link);
-                    row.appendChild(item);
+                    caption.appendChild(title);
+                    caption.appendChild(link);
+                    figure.appendChild(item);
+                    figure.appendChild(caption);
+
+                    body.appendChild(figure);
+
                }).catch(function(error) {
                  console.log(error);
                });
@@ -58,24 +81,47 @@ function get_documents(doctype, province){
         } else {
             documents_array = doc.get('Photos');
             Array.prototype.push.apply(documents_array, doc.get('Videos'));
-            Array.prototype.push.apply(documents_array, doc.get('Recordings'));
+            Array.prototype.push.apply(documents_array, doc.get('Audio'));
 
             documents_array.forEach(function(single_doc) {
                 storage_ref.child(single_doc).getDownloadURL().then(function(url) {
-                    var table = document.getElementsByTagName('tbody')[0];
-                    var row = table.insertRow(0);
+                    var body = document.getElementsByTagName('body')[0];
+                    var figure = document.createElement('figure');
+                    var caption = document.createElement('figcaption');
                     var link = document.createElement('a');
-                    var item = document.createElement('img');
+                    var item = null;
+                    var title = document.createElement('b');
+                    var doctype = single_doc.substring(0, single_doc.indexOf('/'));
 
+                    if(doctype === 'Photos') {
+                        item = document.createElement('img');
+
+                    } else if(doctype === 'Videos') {
+                        item = document.createElement('video');
+                        item.innerHTML = 'Please switch your browser to Chrome or Firefox';
+                        item.controls = true;
+                    } else if(doctype === 'Audio') {
+                        item = document.createElement('audio');
+                        item.innerHTML = 'Please switch your browser to Chrome or Firefox';
+                        item.controls = true;
+                    }
+
+                    item.src = url;
                     link.href = url;
                     link.innerHTML = 'View Document';
-                    item.src = url;
+                    title.innerHTML = single_doc.substring(single_doc.lastIndexOf('/') + 1, single_doc.lastIndexOf('.'));
+                    title.innerHTML += '\t';
 
-                    row.appendChild(link);
-                    row.appendChild(item);
-               }).catch(function(error) {
-                 console.log(error);
-               });
+                    caption.appendChild(title);
+                    caption.appendChild(link);
+                    figure.appendChild(item);
+                    figure.appendChild(caption);
+
+                    body.appendChild(figure);
+
+                }).catch(function(error) {
+                    console.log(error);
+                });
             });
         }
     })
