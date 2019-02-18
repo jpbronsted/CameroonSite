@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "eb5fd0930b186ffcecd1a0fdb9240ac1",
-    "content-hash": "fbf3051a25a333014bf63b2705dac34d",
+    "hash": "93df9d5b0af49304c5b99c29ff1251e4",
+    "content-hash": "7374b1438b217dbebe0887428a82040a",
     "packages": [
         {
             "name": "firebase/php-jwt",
@@ -209,6 +209,56 @@
                 "Apache-2.0"
             ],
             "description": "Cloud Firestore client for PHP",
+            "time": "2019-02-06 21:40:58"
+        },
+        {
+            "name": "google/cloud-storage",
+            "version": "v1.11.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/googleapis/google-cloud-php-storage.git",
+                "reference": "9e4b3aeebfc466671e7aa74862131a3bbd34804d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/googleapis/google-cloud-php-storage/zipball/9e4b3aeebfc466671e7aa74862131a3bbd34804d",
+                "reference": "9e4b3aeebfc466671e7aa74862131a3bbd34804d",
+                "shasum": ""
+            },
+            "require": {
+                "google/cloud-core": "^1.26"
+            },
+            "require-dev": {
+                "erusev/parsedown": "^1.6",
+                "google/cloud-pubsub": "^1.0",
+                "phpdocumentor/reflection": "^3.0",
+                "phpseclib/phpseclib": "^2",
+                "phpunit/phpunit": "^4.8|^5.0",
+                "squizlabs/php_codesniffer": "2.*"
+            },
+            "suggest": {
+                "google/cloud-pubsub": "May be used to register a topic to receive bucket notifications.",
+                "phpseclib/phpseclib": "May be used in place of OpenSSL for creating signed Cloud Storage URLs. Please require version ^2."
+            },
+            "type": "library",
+            "extra": {
+                "component": {
+                    "id": "cloud-storage",
+                    "target": "googleapis/google-cloud-php-storage.git",
+                    "path": "Storage",
+                    "entry": "src/StorageClient.php"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Google\\Cloud\\Storage\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "description": "Cloud Storage Client for PHP",
             "time": "2019-02-06 21:40:58"
         },
         {
