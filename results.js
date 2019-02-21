@@ -131,6 +131,9 @@ function get_documents(doctype, province){
 }
 
 function submit_form(name, id, form) {
-  document.getElementById(id).value = name;
+  if (name != 'Show All Documents' && name != 'Show all provinces')
+    document.getElementById(id).value = name;
+  else
+    document.getElementById(id).value = "";
   form.submit();
 }
