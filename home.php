@@ -1,5 +1,31 @@
 <?php
 $page = 'home';
+
+require 'vendor/autoload.php';
+use Google\Cloud\Storage\StorageClient;
+use Google\Cloud\Core\Timestamp;
+use Google\Cloud\Firestore\FirestoreClient;
+
+// Get a reference to Storage and get all the PDFs
+$storage = new StorageClient([
+  'keyFilePath' => './auth.json'
+]);
+$pdfs = [];
+foreach ($storage->buckets() as $bucket) {
+  foreach ($bucket->objects() as $object) {
+    if (strpos($object->name(), '.pdf') !== false) {
+      array_push($pdfs, array($object->name(),
+        $object->signedURL(new Timestamp(new DateTime('tomorrow')))));
+    }
+  }
+}
+
+// Get a reference to Firestore and get the deathcount
+$firestore = new FirestoreClient([
+  'keyFilePath' => './auth.json'
+]);
+$dcount = $firestore->collection('info')->document('info')->snapshot()
+  ->get('deathcount');
 ?>
 
 <!DOCTYPE html>
@@ -10,8 +36,11 @@ $page = 'home';
     </head>
     <body>
         <div class="container">
-            <button type="button" class="btn btn-danger" style="font-family: 'Roboto', sans-serif; margin-bottom: 10px;">Death Count : 10348</button>
-
+<?php
+echo "<button type=\"button\" class=\"btn btn-danger\" style=\"font-family: " .
+  "\'Roboto\', sans-serif; margin-bottom: 10px;\">Death Count : " . $dcount .
+  "</button>";
+?>
             <h1> Ambazonian Genocide Watch</h1>
             <p> The Cameroonian government has begun a massive campaign to 
             oppress the Ambazonians via mass genocide and torture. The 
@@ -28,6 +57,13 @@ $page = 'home';
             recordings of the genocide that Ambazonians have sent in so the 
             world can know and learn of what has occurred in the once 
             beautiful nation of Ambazonia.</h5>
+            <p> Find out more about the ongoing genocide in the documents
+            below. </p>
+<?php
+foreach ($pdfs as $pdf) {
+  echo "<a href=\"" . $pdf[1] . "\" download>" . $pdf[0] . "</a>" . PHP_EOL;
+}
+?>
         </div>
     </body>
 </html>
