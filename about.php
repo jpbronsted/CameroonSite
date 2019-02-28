@@ -32,7 +32,7 @@ $page = 'about';
             punish those who protest online. Additionally, the government 
             continues to restrict Internet access in Ambazonia to limit the 
             visibility of the ongoing conflict from outside the region.</p>
-            <h3> The Ambazonians cannot and will not stay silenced. </h3>
+            <h2> The Ambazonians cannot and will not stay silenced. </h2>
             <h5> This website is a collection of video, visual, and auditory 
             recordings of the genocide that Ambazonians have sent in so the 
             world can know and learn of what has occurred in the once 

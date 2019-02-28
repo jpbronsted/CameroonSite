@@ -47,22 +47,25 @@ foreach($counties_ref->documents() as $document) {
 		<div class="row">
 			<div class="col">
 
-				<div style="text-align: right;">
+				<div style="text-align: right; padding-bottom: 2rem;">
 					<h1>Browse the documents</h1>
 					<h3>uploaded daily by the Ambazonians</h3>
 					<h3>under siege by the Cameroonian</h3>
 					<h3>government’s genocide</h3>
 				</div>
 
-				<select class="form-control" onchange="document.getElementById('selector').value = value">
-					<option value="all">Show all provinces</option>
-					<?php
-					foreach($counties as $county) {
-						echo "<option value=\"" . $county["name"] . "\">"
-						. $county["name"] . "</option>";
-					}
-					?>
-				</select>
+				<div style="padding-bottom: 1rem;">
+					<select class="form-control" onchange="document.getElementById('selector').value = value">
+						<option value="all">Show all provinces</option>
+						<?php
+						foreach($counties as $county) {
+							echo "<option value=\"" . $county["name"] . "\">"
+							. $county["name"] . "</option>";
+						}
+						?>
+					</select>
+				</div>
+
 
 				<div class="form-group">
 					<form action='results.php' action='get'>

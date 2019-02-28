@@ -3,8 +3,6 @@ select {
     -moz-appearance: none;
     text-indent: 1px;
     text-overflow: '';
-    width: 400px; 
-    height: 200px;
     text-align-last:center;
 }
 
@@ -14,8 +12,4 @@ h1, h2, button {
 
 p, h3, h4, h5 {
 	font-family: "Montserrat", sans-serif;
-}
-
-.space {
-	padding-top: 1rem;
 }

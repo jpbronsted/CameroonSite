@@ -47,21 +47,22 @@ $dcount = $firestore->collection('info')->document('info')->snapshot()
 </head>
 <body>
     <div class="container">
-        <div style="align-items: center;">
-            <?php
-            echo "<button type=\"button\" class=\"btn btn-outline-danger\" style=\"font-family: " .
-            "\'Roboto\', sans-serif;\">Death Count : " . $dcount .
-            "</button>";
-            ?>
+        <div class="row">
+            <div class="col-sm-8" style="text-align: left;">
+                <?php
+                echo "<button type=\"button\" class=\"btn btn-outline-danger\">Death Count : " . $dcount .
+                "</button>";
+                ?>
 
-            <button type="button" class="btn btn-light">
-            <?php
-            foreach ($pdfs as $pdf) {
-              echo "<a href=\"" . $pdf[1] . "\" download>" . $pdf[0] . "</a>" . PHP_EOL;
-            }
-            ?>
-            </button>
+                <?php
+                foreach ($pdfs as $pdf) {
+                  echo "<a class=\"btn btn-outline-dark\" href=\"" . $pdf[1] . "\" download>" . $pdf[0] . "</a>" . PHP_EOL;
+                }
+                ?>
+            </div>
         </div>
+
+        <div style="padding: 1rem;"></div>
 
         <div class="row">
             <div class="col" style="text-align: right;">
@@ -69,14 +70,14 @@ $dcount = $firestore->collection('info')->document('info')->snapshot()
                 <h4>the extensive documentation of the</h4>
                 <h4>genocide that has been hidden from</h4>
                 <h4>the world by an oppressive government</h4>
-                <div class="space"></div>
+                <div style="padding-top: 1rem;"></div>
                 <h5>photos, videos, and audio are uploaded daily</h5>
                 <h5>by the Ambazonians victims of the mass murder</h5>
                 <h5>designed by the Cameroonian government</h5>
             </div>
 
             <div class="col">
-
+                <img src="dummy.png" style="width:500px; height:300px;">
             </div>
         </div>
   </div>
