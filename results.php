@@ -46,7 +46,12 @@ foreach($doctypes_ref->documents() as $document) {
         <script src='results.js'></script>
         <title>Ambazonian Genocide Watch</title>
         <?php include 'header.php'; ?>
+
+        <!-- Bootstrap core JS & CSS -->
+        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <script src="bootstrap/js/bootstrap.min.js"></script>
     </head>
+    
     <body> <!-- onload=initialize()> -->
         <div class='container'>
             <form action='results.php' method='get'>
