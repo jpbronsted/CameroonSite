@@ -11,19 +11,16 @@ if( !isset( $page ) )
         <!-- Global stylesheet -->
         <link rel='stylesheet' href='header.css' />
 
-        <!-- Latest compiled and minified Bootstrap CSS -->
-        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-            integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-            rel="stylesheet" crossorigin="anonymous">
-
-        <!-- Latest compiled and minified Bootstrap JS -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-            crossorigin="anonymous"></script>
+        <!-- Bootstrap core JS & CSS -->
+        <link href="bootstrap/bootstrap.min.css" rel="stylesheet">
+        <script src="bootstrap/bootstrap.min.js"></script>
 
         <!-- Google Fonts API -->
         <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto"
             rel="stylesheet">
+
+        <!-- CSS -->
+        <link rel="stylesheet" type="text/css" href="style.css">
         
         <div class='menu-bar'>
             <ul>
