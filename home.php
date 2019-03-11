@@ -48,7 +48,7 @@ $dcount = $firestore->collection('info')->document('info')->snapshot()
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-sm-8" style="text-align: left;">
+            <div class="col-sm-8" style="text-align: center;">
                 <?php
                 echo "<button type=\"button\" class=\"btn btn-outline-danger\">Death Count : " . $dcount .
                 "</button>";
@@ -62,7 +62,7 @@ $dcount = $firestore->collection('info')->document('info')->snapshot()
             </div>
         </div>
 
-        <div style="padding: 1rem;"></div>
+        <!-- <div style="padding: 1rem;"></div> -->
 
         <div class="row">
             <div class="col" style="text-align: right;">

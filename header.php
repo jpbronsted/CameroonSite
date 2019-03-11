@@ -22,23 +22,24 @@ if( !isset( $page ) )
         <!-- CSS -->
         <link rel="stylesheet" type="text/css" href="style.css">
         
-        <div class='menu-bar'>
-            <ul>
-                <li><a href='home.php' class="<?php echo $page === 'home'
-                    ? 'active' : '';?>">Home</a></li>
-                <li><a href='about.php' class="<?php echo $page === 'about'
-                    ? 'active' : '';?>">About</a></li>
-                <li class='dropdown'>
-                    <a href='browse.php' class="<?php echo $page === 'browse'
+        <nav class="navbar navbar-expand-sm bg-secondary navbar-dark">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href='home.php' class="<?php echo $page === 'home'
+                    ? 'active' : '';?>">Home</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href='about.php' class="<?php echo $page === 'about'
+                    ? 'active' : '';?>">About</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href='browse.php' class="<?php echo $page === 'browse'
                         ? 'active' : '';?>">Browse</a>
-                    <div class='dropdown-content'>
-                        <a href='results.php?province=all&type=Photos'>Photos</a>
-                        <a href='results.php?province=all&type=Videos'>Videos</a>
-                        <a href='results.php?province=all&type=Audio+Recordings'>Audio</a>
-                    </div>
                 </li>
             </ul>
-        </div>
+        </nav>
     </head>
     <body>
     </body>

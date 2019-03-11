@@ -56,8 +56,9 @@ foreach($doctypes_ref->documents() as $document) {
 <body> <!-- onload=initialize()> -->
   <div class='container'>
 
-    <!-- document type -->
     <form action='results.php' method='get'>
+
+        <!-- Select Document Type -->
         <input type="hidden" value="<?php echo $province; ?>"
         name="province" id="prov-selector" />
         <input type="hidden" value="<?php echo $type; ?>"
@@ -96,6 +97,7 @@ foreach($doctypes_ref->documents() as $document) {
 
 <!-- PHP for accomodating UI -->
 <?php
+
 // Generates a UI element for a particular URL and type
 function add_UI($url, $doctype) {
   // For now, just make generic UI elements
