@@ -50,6 +50,7 @@ foreach($counties_ref->documents() as $document) {
 		<div class="row">
 			<div class="col">
 
+				<!-- TEXT -->
 				<div style="text-align: right; padding-bottom: 2rem;">
 					<h1>Browse the documents</h1>
 					<h3>uploaded daily by the Ambazonians</h3>
@@ -74,7 +75,6 @@ foreach($counties_ref->documents() as $document) {
 						<select class="form-control" type='type-selector' value='Sort By Documents' ></select>
 					</form>
 				</div>
-
 			</div> <!-- col 1 -->
 
 			<br>
@@ -93,7 +93,6 @@ foreach($counties_ref->documents() as $document) {
 					?>
 				</map>
 			</div> <!-- col 2 -->
-
 		</div> <!-- row -->
 	</div> <!-- container -->
 </body>

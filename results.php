@@ -97,7 +97,6 @@ foreach($doctypes_ref->documents() as $document) {
 
 <!-- PHP for accomodating UI -->
 <?php
-
 // Generates a UI element for a particular URL and type
 function add_UI($url, $doctype) {
   // For now, just make generic UI elements
@@ -129,7 +128,7 @@ if ($type === 'all' && $province === 'all') {
     $prefixes = [ '' ];
 
 } else {
-    //
+    // document type
     if ($type === 'all')
         $prototypes = ['Photos', 'Videos', 'Audio'];
     else if ($type === 'Audio Recordings')
@@ -137,7 +136,7 @@ if ($type === 'all' && $province === 'all') {
     else
         $prototypes = [$type];
 
-    // 
+    // province type
     if ($province === 'all') {
         $prefixes = $prototypes;
     } else {
