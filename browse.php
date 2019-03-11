@@ -24,9 +24,12 @@ foreach($counties_ref->documents() as $document) {
 }
 ?>
 
+
+
 <!DOCTYPE html>
 <html>
 <head>
+
 	<title>Ambazonian Genocide Watch</title>
 	<?php include 'header.php'; ?>
 
@@ -54,27 +57,25 @@ foreach($counties_ref->documents() as $document) {
 					<h3>government’s genocide</h3>
 				</div>
 
-				<div style="padding-bottom: 1rem;">
-					<select class="form-control" onchange="document.getElementById('selector').value = value">
-						<option value="all">Show all provinces</option>
-						<?php
-						foreach($counties as $county) {
-							echo "<option value=\"" . $county["name"] . "\">"
-							. $county["name"] . "</option>";
-						}
-						?>
-					</select>
-				</div>
-
-
+				<!-- VIEW ALL DOCUMENTS -->
 				<div class="form-group">
 					<form action='results.php' action='get'>
 						<input type="hidden" name="province" value="all" id="selector" />
 						<input type="hidden" name="type" value="all" />
-						<input class="form-control" type='submit' value='View Documents' />
+						<input class="form-control" type='submit' value='View All Documents' />
 					</form>
 				</div>
-			</div>
+
+				<!-- SORT BY DOCUMENTS -->
+				<div class="form-group">
+					<form action='results.php' action='get'>
+						<input type="hidden" name="province" value="all" id="selector" />
+						<input type="hidden" name="type" value="all" />
+						<select class="form-control" type='type-selector' value='Sort By Documents' ></select>
+					</form>
+				</div>
+
+			</div> <!-- col 1 -->
 
 			<br>
 
@@ -91,8 +92,9 @@ foreach($counties_ref->documents() as $document) {
 					}
 					?>
 				</map>
-			</div>
-		</div>
-	</div>
+			</div> <!-- col 2 -->
+
+		</div> <!-- row -->
+	</div> <!-- container -->
 </body>
 </html>
