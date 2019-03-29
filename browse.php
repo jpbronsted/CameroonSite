@@ -12,6 +12,14 @@ $firestore = new FirestoreClient([
 ]);
 $counties_ref = $firestore->collection('counties');
 
+// Generate page-level attributes
+$province = isset($_REQUEST['province']) ? $_REQUEST['province'] : 'all';
+if ($province === '')
+    $province = 'all';
+$type = isset($_REQUEST['type']) ? $_REQUEST['type'] : 'all';
+if ($type === '')
+    $type = 'all';
+
 // Get the list of counties and their image map data from the database
 $counties = [];
 foreach($counties_ref->documents() as $document) {
@@ -22,6 +30,15 @@ foreach($counties_ref->documents() as $document) {
 		"radius" => (float) $document->get('radius')
 	));
 }
+
+// Doctype content for sortying by type
+$doctypes_ref = $firestore->collection('doctypes');
+
+$doctypes = ["Sort By Document"];
+foreach($doctypes_ref->documents() as $document) {
+    array_push($doctypes, $document->id());
+}
+
 ?>
 
 
@@ -67,14 +84,23 @@ foreach($counties_ref->documents() as $document) {
 					</form>
 				</div>
 
-				<!-- SORT BY DOCUMENTS -->
-				<div class="form-group">
-					<form action='results.php' action='get'>
-						<input type="hidden" name="province" value="all" id="selector" />
-						<input type="hidden" name="type" value="all" />
-						<select class="form-control" type='type-selector' value='Sort By Documents' ></select>
-					</form>
-				</div>
+				<!-- SELECT BY DOCUMENTS -->
+				<input type="hidden" value="<?php echo $province; ?>" name="province" id="prov-selector" />
+				<input type="hidden" value="<?php echo $type; ?>" name="type" id="type-selector"/>
+				<select class="form-control" id='doctype' onchange="submit_form(value, 'type-selector',
+				this.form);">
+					<?php
+					foreach($doctypes as $doctype) {
+						if ($doctype === $type) {
+							echo "<option selected ";
+						} else {
+							echo "<option ";
+						}
+						echo "value=\"" . $doctype . "\">" . $doctype . "</option>";
+					}
+					?>
+				</select>
+
 			</div> <!-- col 1 -->
 
 			<br>

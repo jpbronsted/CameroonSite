@@ -21,3 +21,20 @@ p, h3, h4, h5 {
 #nav-item {
 	color: white;
 }
+
+img {
+	max-width: 300px;
+}
+
+video {
+	max-width: 300px;
+}
+
+audio {
+	max-width: 300px;
+}
+
+.container-fluid {
+	margin-right: 2rem;
+	margin-left: 2rem;
+}
