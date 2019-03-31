@@ -150,7 +150,7 @@ if ($type === 'all' && $province === 'all') {
 
 // setting up the counter that will separate columns and rows
 $counter = 0;
-echo '<div class="container-fluid">'; // open container
+echo '<div class="container">'; // open container
 
 // Issue queries for all the relevant prefixes
 foreach($prefixes as $prefix) {
@@ -161,18 +161,18 @@ foreach($prefixes as $prefix) {
 			if (($counter - 1) % 2 == 0) {
 				if ($counter - 1 == 0) {
 					echo '<div class = "row">'; 
-					echo '<div class = "col">';
+					echo '<div class = "col-sm">';
 				} else {
 					echo '</div>';
 					echo '</div>';
 					echo '<div class = "row">'; 
-					echo '<div class = "col">';
+					echo '<div class = "col-sm">';
 				}
 			} 
 
 			if (($counter - 1) % 2 == 1) { // 2nd and 3rd cols
 				echo '</div">';
-				echo '<div class = "col">';
+				echo '<div class = "col-sm">';
 			}        	
 
 			$parts = pathinfo($object->name());
