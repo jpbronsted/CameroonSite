@@ -16,8 +16,8 @@ foreach ($storage->buckets() as $bucket) {
     if (strpos($object->name(), '.pdf') !== false) {
       array_push($pdfs, array($object->name(),
         $object->signedURL(new Timestamp(new DateTime('tomorrow')))));
-    }
   }
+}
 }
 
 // Get a reference to Firestore and get the deathcount
@@ -25,45 +25,61 @@ $firestore = new FirestoreClient([
   'keyFilePath' => './auth.json'
 ]);
 $dcount = $firestore->collection('info')->document('info')->snapshot()
-  ->get('deathcount');
+->get('deathcount');
 ?>
 
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Ambazonian Genocide Watch</title>
-        <?php include 'header.php'; ?>
-    </head>
-    <body>
-        <div class="container">
-<?php
-echo "<button type=\"button\" class=\"btn btn-danger\" style=\"font-family: " .
-  "\'Roboto\', sans-serif; margin-bottom: 10px;\">Death Count : " . $dcount .
-  "</button>";
-?>
-            <h1> Ambazonian Genocide Watch</h1>
-            <p> The Cameroonian government has begun a massive campaign to 
-            oppress the Ambazonians via mass genocide and torture. The 
-            government further prohibits the documentation of the atrocities 
-            it commits, preventing the world from discovering the disasters the
-             Ambazonians are facing every day. The censorship government has
-             enforced has become so extreme that government agents randomly 
-            confiscate and examine people’s electronic devices to find and 
-            punish those who protest online. Additionally, the government 
-            continues to restrict Internet access in Ambazonia to limit the 
-            visibility of the ongoing conflict from outside the region.</p>
-            <h3> The Ambazonians cannot and will not stay silenced. </h3>
-            <h5> This website is a collection of video, visual, and auditory 
-            recordings of the genocide that Ambazonians have sent in so the 
-            world can know and learn of what has occurred in the once 
-            beautiful nation of Ambazonia.</h5>
-            <p> Find out more about the ongoing genocide in the documents
-            below. </p>
-<?php
-foreach ($pdfs as $pdf) {
-  echo "<a href=\"" . $pdf[1] . "\" download>" . $pdf[0] . "</a>" . PHP_EOL;
-}
-?>
+<head>
+    <title>Ambazonian Genocide Watch</title>
+    <?php include 'header.php'; ?>
+
+    <!-- Bootstrap core JS & CSS -->
+    <link href="bootstrap/bootstrap.min.css" rel="stylesheet">
+    <script src="bootstrap/bootstrap.min.js"></script>
+
+    <!-- Google Fonts API -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto"
+    rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8" style="text-align: center;">
+                <?php
+                echo "<button type=\"button\" class=\"btn btn-outline-danger\">Death Count : " . $dcount .
+                "</button>";
+                ?>
+
+                <?php
+                foreach ($pdfs as $pdf) {
+                  echo "<a class=\"btn btn-outline-dark\" href=\"" . $pdf[1] . "\" download>" . $pdf[0] . "</a>" . PHP_EOL;
+                }
+                ?>
+            </div>
         </div>
-    </body>
+
+        <!-- <div style="padding: 1rem;"></div> -->
+
+        <div class="row">
+            <div class="col" style="text-align: right;">
+                <h1>The Ambazonian Genocide</h1>
+                <h4>the extensive documentation of the</h4>
+                <h4>genocide that has been hidden from</h4>
+                <h4>the world by an oppressive government</h4>
+                <div style="padding-top: 1rem;"></div>
+                <h5>photos, videos, and audio are uploaded daily</h5>
+                <h5>by the Ambazonians victims of the mass murder</h5>
+                <h5>designed by the Cameroonian government</h5>
+            </div>
+
+            <div class="col">
+                <img src="dummy.png" style="width:500px; height:300px;">
+            </div>
+        </div>
+  </div>
+</body>
 </html>

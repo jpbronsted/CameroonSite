@@ -1,0 +1,44 @@
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+    text-align-last:center;
+}
+
+h1, h2, button {
+	font-family: 'Roboto', sans-serif;
+}
+
+p, h3, h4, h5 {
+	font-family: "Montserrat", sans-serif;
+}
+
+#menu-bar {
+  	position: fixed;
+}
+
+#nav-item {
+	color: white;
+}
+
+img {
+	max-width: 300px;
+}
+
+video {
+	max-width: 300px;
+}
+
+audio {
+	max-width: 300px;
+}
+/*
+.container-fluid {
+	margin-right: 2rem;
+	margin-left: 2rem;
+}
+*/
+/*.container {
+    max-width: 700px;
+}*/

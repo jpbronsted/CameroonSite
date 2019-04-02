@@ -11,37 +11,35 @@ if( !isset( $page ) )
         <!-- Global stylesheet -->
         <link rel='stylesheet' href='header.css' />
 
-        <!-- Latest compiled and minified Bootstrap CSS -->
-        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-            integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-            rel="stylesheet" crossorigin="anonymous">
-
-        <!-- Latest compiled and minified Bootstrap JS -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-            crossorigin="anonymous"></script>
+        <!-- Bootstrap core JS & CSS -->
+        <link href="bootstrap/bootstrap.min.css" rel="stylesheet">
+        <script src="bootstrap/bootstrap.min.js"></script>
 
         <!-- Google Fonts API -->
         <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto"
             rel="stylesheet">
+
+        <!-- CSS -->
+        <link rel="stylesheet" type="text/css" href="style.css">
         
-        <div class='menu-bar'>
-            <ul>
-                <li><a href='home.php' class="<?php echo $page === 'home'
-                    ? 'active' : '';?>">Home</a></li>
-                <li><a href='about.php' class="<?php echo $page === 'about'
-                    ? 'active' : '';?>">About</a></li>
-                <li class='dropdown'>
-                    <a href='browse.php' class="<?php echo $page === 'browse'
+        <nav class="navbar navbar-expand-sm bg-secondary navbar-dark">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href='home.php' class="<?php echo $page === 'home'
+                    ? 'active' : '';?>">Home</a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href='about.php' class="<?php echo $page === 'about'
+                    ? 'active' : '';?>">About</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href='browse.php' class="<?php echo $page === 'browse'
                         ? 'active' : '';?>">Browse</a>
-                    <div class='dropdown-content'>
-                        <a href='results.php?province=all&type=Photos'>Photos</a>
-                        <a href='results.php?province=all&type=Videos'>Videos</a>
-                        <a href='results.php?province=all&type=Audio+Recordings'>Audio</a>
-                    </div>
                 </li>
             </ul>
-        </div>
+        </nav>
     </head>
     <body>
     </body>

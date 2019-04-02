@@ -1,11 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "hash": "93df9d5b0af49304c5b99c29ff1251e4",
-    "content-hash": "7374b1438b217dbebe0887428a82040a",
+    "content-hash": "0651549e11d14bf2ffd12e036ad3a02c",
     "packages": [
         {
             "name": "firebase/php-jwt",
@@ -51,7 +50,7 @@
             ],
             "description": "A simple library to encode and decode JSON Web Tokens (JWT) in PHP. Should conform to the current spec.",
             "homepage": "https://github.com/firebase/php-jwt",
-            "time": "2017-06-27 22:17:23"
+            "time": "2017-06-27T22:17:23+00:00"
         },
         {
             "name": "google/auth",
@@ -98,7 +97,57 @@
                 "google",
                 "oauth2"
             ],
-            "time": "2018-09-17 20:29:21"
+            "time": "2018-09-17T20:29:21+00:00"
+        },
+        {
+            "name": "google/cloud-bigquery",
+            "version": "v1.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/googleapis/google-cloud-php-bigquery.git",
+                "reference": "90a332136e14bb65e73be47d64f7ff6f1e0d38ad"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/googleapis/google-cloud-php-bigquery/zipball/90a332136e14bb65e73be47d64f7ff6f1e0d38ad",
+                "reference": "90a332136e14bb65e73be47d64f7ff6f1e0d38ad",
+                "shasum": ""
+            },
+            "require": {
+                "google/cloud-core": "^1.26",
+                "ramsey/uuid": "~3"
+            },
+            "require-dev": {
+                "erusev/parsedown": "^1.6",
+                "google/cloud-storage": "^1.3",
+                "phpdocumentor/reflection": "^3.0",
+                "phpunit/phpunit": "^4.8|^5.0",
+                "squizlabs/php_codesniffer": "2.*"
+            },
+            "suggest": {
+                "google/cloud-storage": "Makes it easier to load data from Cloud Storage into BigQuery"
+            },
+            "type": "library",
+            "extra": {
+                "component": {
+                    "displayName": "Google Cloud BigQuery",
+                    "id": "cloud-bigquery",
+                    "target": "googleapis/google-cloud-php-bigquery.git",
+                    "path": "BigQuery",
+                    "entry": "src/BigQueryClient.php"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Google\\Cloud\\BigQuery\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "description": "BigQuery Client for PHP",
+            "time": "2019-02-06T21:40:58+00:00"
         },
         {
             "name": "google/cloud-core",
@@ -158,26 +207,26 @@
                 "Apache-2.0"
             ],
             "description": "Google Cloud PHP shared dependency, providing functionality useful to all components.",
-            "time": "2019-02-06 21:40:58"
+            "time": "2019-02-06T21:40:58+00:00"
         },
         {
             "name": "google/cloud-firestore",
-            "version": "v1.0.0",
+            "version": "v0.14.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/googleapis/google-cloud-php-firestore.git",
-                "reference": "fc61e176c9737e6110f755a262209dc15e802057"
+                "reference": "e90608d9b8610388d0318626a1651c08539a0275"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/google-cloud-php-firestore/zipball/fc61e176c9737e6110f755a262209dc15e802057",
-                "reference": "fc61e176c9737e6110f755a262209dc15e802057",
+                "url": "https://api.github.com/repos/googleapis/google-cloud-php-firestore/zipball/e90608d9b8610388d0318626a1651c08539a0275",
+                "reference": "e90608d9b8610388d0318626a1651c08539a0275",
                 "shasum": ""
             },
             "require": {
                 "ext-grpc": "*",
-                "google/cloud-core": "^1.26",
-                "google/gax": "^0.38.0",
+                "google/cloud-core": "^1.23",
+                "google/gax": "^0.37",
                 "ramsey/uuid": "~3"
             },
             "require-dev": {
@@ -193,7 +242,7 @@
             "extra": {
                 "component": {
                     "id": "cloud-firestore",
-                    "target": "googleapis/google-cloud-php-firestore.git",
+                    "target": "GoogleCloudPlatform/google-cloud-php-firestore.git",
                     "path": "Firestore",
                     "entry": "src/FirestoreClient.php"
                 }
@@ -209,7 +258,7 @@
                 "Apache-2.0"
             ],
             "description": "Cloud Firestore client for PHP",
-            "time": "2019-02-06 21:40:58"
+            "time": "2018-09-04T17:19:07+00:00"
         },
         {
             "name": "google/cloud-storage",
@@ -259,66 +308,26 @@
                 "Apache-2.0"
             ],
             "description": "Cloud Storage Client for PHP",
-            "time": "2019-02-06 21:40:58"
-        },
-        {
-            "name": "google/common-protos",
-            "version": "0.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/googleapis/common-protos-php.git",
-                "reference": "0bc3c17350a37423da29391fa3d0e6082dd896b5"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/common-protos-php/zipball/0bc3c17350a37423da29391fa3d0e6082dd896b5",
-                "reference": "0bc3c17350a37423da29391fa3d0e6082dd896b5",
-                "shasum": ""
-            },
-            "require": {
-                "google/protobuf": "^3.6.1"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^4.8.36",
-                "sami/sami": "*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Google\\": "src",
-                    "GPBMetadata\\Google\\": "metadata"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Apache-2.0"
-            ],
-            "description": "Google API Common Protos for PHP",
-            "homepage": "https://github.com/googleapis/common-protos-php",
-            "keywords": [
-                "google"
-            ],
-            "time": "2018-11-05 20:09:01"
+            "time": "2019-02-06T21:40:58+00:00"
         },
         {
             "name": "google/gax",
-            "version": "0.38.0",
+            "version": "0.37.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/googleapis/gax-php.git",
-                "reference": "ba141d49c58f949a31b9cfb31f6da876adc2919d"
+                "reference": "2d8b9103f1be3e3ababd8a733beae705d563edf5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/gax-php/zipball/ba141d49c58f949a31b9cfb31f6da876adc2919d",
-                "reference": "ba141d49c58f949a31b9cfb31f6da876adc2919d",
+                "url": "https://api.github.com/repos/googleapis/gax-php/zipball/2d8b9103f1be3e3ababd8a733beae705d563edf5",
+                "reference": "2d8b9103f1be3e3ababd8a733beae705d563edf5",
                 "shasum": ""
             },
             "require": {
                 "google/auth": "^1.2.0",
-                "google/common-protos": "^0.1",
                 "google/grpc-gcp": "^0.1.0",
-                "google/protobuf": "^3.6.1",
+                "google/protobuf": "^3.5.1",
                 "grpc/grpc": "^1.4",
                 "guzzlehttp/promises": "^1.3",
                 "guzzlehttp/psr7": "^1.2",
@@ -332,7 +341,14 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Google\\ApiCore\\": "src",
+                    "Google\\Api\\": "src/Api",
+                    "Google\\ApiCore\\": "src/ApiCore",
+                    "Google\\Cloud\\": "src/Cloud",
+                    "Google\\Iam\\": "src/Iam",
+                    "Google\\Jison\\": "src/Jison",
+                    "Google\\LongRunning\\": "src/LongRunning",
+                    "Google\\Rpc\\": "src/Rpc",
+                    "Google\\Type\\": "src/Type",
                     "GPBMetadata\\Google\\": "metadata"
                 }
             },
@@ -345,7 +361,7 @@
             "keywords": [
                 "google"
             ],
-            "time": "2018-12-17 16:37:25"
+            "time": "2018-08-20T19:05:50+00:00"
         },
         {
             "name": "google/grpc-gcp",
@@ -384,20 +400,20 @@
                 "Apache-2.0"
             ],
             "description": "gRPC GCP library for channel management",
-            "time": "2018-12-13 04:04:24"
+            "time": "2018-12-13T04:04:24+00:00"
         },
         {
             "name": "google/protobuf",
             "version": "v3.6.1.3",
             "source": {
                 "type": "git",
-                "url": "https://github.com/protocolbuffers/protobuf.git",
-                "reference": "66dc42d891a4fc8e9190c524fd67961688a37bbe"
+                "url": "https://github.com/protocolbuffers/protobuf-php.git",
+                "reference": "c39346815303f63ad295d6499e11d914c40040e6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/protocolbuffers/protobuf/zipball/66dc42d891a4fc8e9190c524fd67961688a37bbe",
-                "reference": "66dc42d891a4fc8e9190c524fd67961688a37bbe",
+                "url": "https://api.github.com/repos/protocolbuffers/protobuf-php/zipball/c39346815303f63ad295d6499e11d914c40040e6",
+                "reference": "c39346815303f63ad295d6499e11d914c40040e6",
                 "shasum": ""
             },
             "require": {
@@ -425,20 +441,20 @@
             "keywords": [
                 "proto"
             ],
-            "time": "2018-12-08 01:32:11"
+            "time": "2018-12-08T01:32:11+00:00"
         },
         {
             "name": "grpc/grpc",
-            "version": "1.15.0",
+            "version": "1.19.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/grpc/grpc-php.git",
-                "reference": "1a7cd0dc95a68594b8a8cfbf75ff236383172e2f"
+                "reference": "0f1ffdde45bfb9257c5d9eab81695d0f042bea22"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/grpc/grpc-php/zipball/1a7cd0dc95a68594b8a8cfbf75ff236383172e2f",
-                "reference": "1a7cd0dc95a68594b8a8cfbf75ff236383172e2f",
+                "url": "https://api.github.com/repos/grpc/grpc-php/zipball/0f1ffdde45bfb9257c5d9eab81695d0f042bea22",
+                "reference": "0f1ffdde45bfb9257c5d9eab81695d0f042bea22",
                 "shasum": ""
             },
             "require": {
@@ -466,7 +482,7 @@
             "keywords": [
                 "rpc"
             ],
-            "time": "2018-09-12 21:49:56"
+            "time": "2019-02-27T04:47:56+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -531,7 +547,7 @@
                 "rest",
                 "web service"
             ],
-            "time": "2018-04-22 15:46:56"
+            "time": "2018-04-22T15:46:56+00:00"
         },
         {
             "name": "guzzlehttp/promises",
@@ -582,7 +598,7 @@
             "keywords": [
                 "promise"
             ],
-            "time": "2016-12-20 10:07:11"
+            "time": "2016-12-20T10:07:11+00:00"
         },
         {
             "name": "guzzlehttp/psr7",
@@ -649,7 +665,7 @@
                 "uri",
                 "url"
             ],
-            "time": "2018-12-04 20:46:45"
+            "time": "2018-12-04T20:46:45+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -727,7 +743,7 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2018-11-05 09:00:11"
+            "time": "2018-11-05T09:00:11+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -772,7 +788,7 @@
                 "pseudorandom",
                 "random"
             ],
-            "time": "2018-07-02 15:55:56"
+            "time": "2018-07-02T15:55:56+00:00"
         },
         {
             "name": "psr/cache",
@@ -818,7 +834,7 @@
                 "psr",
                 "psr-6"
             ],
-            "time": "2016-08-06 20:24:11"
+            "time": "2016-08-06T20:24:11+00:00"
         },
         {
             "name": "psr/http-message",
@@ -868,7 +884,7 @@
                 "request",
                 "response"
             ],
-            "time": "2016-08-06 14:39:51"
+            "time": "2016-08-06T14:39:51+00:00"
         },
         {
             "name": "psr/log",
@@ -915,7 +931,7 @@
                 "psr",
                 "psr-3"
             ],
-            "time": "2018-11-20 15:27:04"
+            "time": "2018-11-20T15:27:04+00:00"
         },
         {
             "name": "ralouphie/getallheaders",
@@ -955,7 +971,7 @@
                 }
             ],
             "description": "A polyfill for getallheaders.",
-            "time": "2016-02-11 07:05:27"
+            "time": "2016-02-11T07:05:27+00:00"
         },
         {
             "name": "ramsey/uuid",
@@ -1037,7 +1053,7 @@
                 "identifier",
                 "uuid"
             ],
-            "time": "2018-07-19 23:38:55"
+            "time": "2018-07-19T23:38:55+00:00"
         },
         {
             "name": "rize/uri-template",
@@ -1081,7 +1097,7 @@
                 "template",
                 "uri"
             ],
-            "time": "2017-06-14 03:57:53"
+            "time": "2017-06-14T03:57:53+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
@@ -1139,7 +1155,7 @@
                 "polyfill",
                 "portable"
             ],
-            "time": "2018-08-06 14:22:27"
+            "time": "2018-08-06T14:22:27+00:00"
         }
     ],
     "packages-dev": [],
