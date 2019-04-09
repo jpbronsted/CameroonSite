@@ -49,6 +49,7 @@ foreach($doctypes_ref->documents() as $document) {
 
 	<title>Ambazonian Genocide Watch</title>
 	<?php include 'header.php'; ?>
+	<script src='results.js'></script>
 
 	<!-- Bootstrap core JS & CSS -->
 	<link href="bootstrap/bootstrap.min.css" rel="stylesheet">
@@ -85,21 +86,23 @@ foreach($doctypes_ref->documents() as $document) {
 				</div>
 
 				<!-- SELECT BY DOCUMENTS -->
-				<input type="hidden" value="<?php echo $province; ?>" name="province" id="prov-selector" />
-				<input type="hidden" value="<?php echo $type; ?>" name="type" id="type-selector"/>
-				<select class="form-control" id='doctype' onchange="submit_form(value, 'type-selector',
-				this.form);">
-					<?php
-					foreach($doctypes as $doctype) {
-						if ($doctype === $type) {
-							echo "<option selected ";
-						} else {
-							echo "<option ";
+				<form action='results.php' action='get'>
+					<input type="hidden" value="<?php echo $province; ?>" name="province" id="prov-selector" />
+					<input type="hidden" value="<?php echo $type; ?>" name="type" id="type-selector"/>
+					<select class="form-control" id='doctype' onchange="submit_form(value, 'type-selector',
+					this.form);">
+						<?php
+						foreach($doctypes as $doctype) {
+							if ($doctype === $type) {
+								echo "<option selected ";
+							} else {
+								echo "<option ";
+							}
+							echo "value=\"" . $doctype . "\">" . $doctype . "</option>";
 						}
-						echo "value=\"" . $doctype . "\">" . $doctype . "</option>";
-					}
-					?>
-				</select>
+						?>
+					</select>
+				</form>
 
 			</div> <!-- col 1 -->
 
