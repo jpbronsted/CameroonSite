@@ -22,16 +22,29 @@ $page = 'about';
     <body>
         <div class='container'>
             <h1> Ambazonian Genocide Watch</h1>
-            <p> The Cameroonian government has begun a massive campaign to 
-            oppress the Ambazonians via mass genocide and torture. The 
-            government further prohibits the documentation of the atrocities 
-            it commits, preventing the world from discovering the disasters the
-             Ambazonians are facing every day. The censorship government has
-             enforced has become so extreme that government agents randomly 
-            confiscate and examine people’s electronic devices to find and 
-            punish those who protest online. Additionally, the government 
-            continues to restrict Internet access in Ambazonia to limit the 
-            visibility of the ongoing conflict from outside the region.</p>
+            <p>In 100 days, the Hutu government of Rwanda slaughtered 800.000
+            Tutsis under the watchful eye of President Bill Clinton and
+            Secretary General of the United Nations, Koffi Anan. In March 1998,
+            President Bill Clinton issued the 'Never Again' apology, in which
+            he proclaimed, 'Never Again' shall the world standby and witness
+            genocide!!</p>
+            <p>Since November 2016, there is an ongoing Genocide on the people
+            of Southern Cameroons by Paul Biya, the brutal dictator of La
+            Republique du Cameroun, under the watchful eye and appreciation of
+            Mr. Antonio Guteress, Secretary General of the United Nations.</p>
+            <p>The goal of this website is to systematically document these
+            atrocities committed by soldiers of the brutal dictator of La
+            Republique du Cameroun and raise awareness in the world on the
+            current Genocide on the people of Southern Cameroons/Ambazonia.</p>
+            <p>Our hope is that the world shall not yet again, be Bystanders to
+            Genocide. We hope people of goodwill across the world will stand up
+            and say loudly - 'Never Again' - and take robust action against
+            this brutal dictator of La Republique du Cameroun who has murdered
+            over 10,000 innocent civilians merely for being Southern
+            Cameroonians/Ambazonians.</p>
+            <p>We appeal to the consciences of the good people of the world to
+            call on world governments and the United Nations to STOP THIS
+            GENOCIDE.</p>
             <h2> The Ambazonians cannot and will not stay silenced. </h2>
             <h5> This website is a collection of video, visual, and auditory 
             recordings of the genocide that Ambazonians have sent in so the 
