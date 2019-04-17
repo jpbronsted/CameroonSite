@@ -16,8 +16,8 @@ foreach ($storage->buckets() as $bucket) {
     if (strpos($object->name(), '.pdf') !== false) {
       array_push($pdfs, array($object->name(),
         $object->signedURL(new Timestamp(new DateTime('tomorrow')))));
+    }
   }
-}
 }
 
 // Get a reference to Firestore and get the deathcount
@@ -54,11 +54,6 @@ $dcount = $firestore->collection('info')->document('info')->snapshot()
                 "</button>";
                 ?>
 
-                <?php
-                foreach ($pdfs as $pdf) {
-                  echo "<a class=\"btn btn-outline-dark\" href=\"" . $pdf[1] . "\" download>" . $pdf[0] . "</a>" . PHP_EOL;
-                }
-                ?>
             </div>
         </div>
 
@@ -78,6 +73,16 @@ $dcount = $firestore->collection('info')->document('info')->snapshot()
 
             <div class="col">
                 <img src="dummy.png" style="width:500px; height:300px;">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-8" style="text-align: center;">
+                <?php
+                foreach ($pdfs as $pdf) {
+                  echo "<a class=\"btn btn-outline-dark\" href=\"" . $pdf[1] . "\" download>" . $pdf[0] . "</a>" . PHP_EOL;
+                }
+                ?>
             </div>
         </div>
   </div>
