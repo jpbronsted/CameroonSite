@@ -102,7 +102,7 @@ foreach($doctypes_ref->documents() as $document) {
 // Generates a UI element for a particular URL and type
 function add_UI($url, $doctype) {
   // For now, just make generic UI elements
-	$audio_type = 'audio/mp4';
+  $audio_type = 'audio/mp4';
 	switch($doctype) {
 		case 'photo':
 		echo '<img src="' . $url . '" />' . PHP_EOL;
@@ -157,46 +157,38 @@ foreach($prefixes as $prefix) {
 	foreach($storage->buckets() as $bucket) {
 		foreach($bucket->objects(['prefix' => $prefix]) as $object) {
 
-			$counter = $counter + 1;
-			if (($counter - 1) % 2 == 0) {
-				if ($counter - 1 == 0) {
-					echo '<div class = "row">'; 
-					echo '<div class = "col-sm">';
-				} else {
-					echo '</div>';
-					echo '</div>';
-					echo '<div class = "row">'; 
-					echo '<div class = "col-sm">';
-				}
-			} 
+      $parts = pathinfo($object->name());
 
-			if (($counter - 1) % 2 == 1) { // 2nd and 3rd cols
-				echo '</div">';
-				echo '<div class = "col-sm">';
-			}        	
+      // Ignore elements that are directories
+      if (!isset($parts['extension']))
+        continue;
 
-			$parts = pathinfo($object->name());
+      // Arrange the objects in three columns
+      if ($counter % 3 == 0 && $counter > 0)
+        echo '</div>';
+      if ($counter % 3 == 0)
+        echo '<div class = "row">'; 
+      echo '<div class = "col-sm" style="text-align: center;">';
+      $counter += 1;
+
+      // Set the document type appropriately
 			$doctype = 'none';
-			if (strpos($parts['dirname'], 'Photo') !== false
-				&& isset($parts['extension'])) {
+			if (strpos($parts['dirname'], 'Photo') !== false)
 				$doctype = 'photo';
-			} else if (strpos($parts['dirname'], 'Video') !== false
-				&& isset($parts['extension'])) {
+			else if (strpos($parts['dirname'], 'Video') !== false)
 				$doctype = 'video';
-			} else if (strpos($parts['dirname'], 'Audio') !== false
-				&& isset($parts['extension'])) {
+			else if (strpos($parts['dirname'], 'Audio') !== false)
 				$doctype = 'audio';
-			}
 
 	            // Add an appropriate UI element for each object found
-			add_UI($object->signedUrl(new Timestamp(new DateTime('tomorrow'))),
+      add_UI($object->signedUrl(new Timestamp(new DateTime('tomorrow'))),
 				$doctype);
 
 			echo '</div>';
 		}
 	}
 }
-echo '</div></div></div>'; // end container
+echo '</div></div>'; // end container
 ?>
 </body>
 </html>
