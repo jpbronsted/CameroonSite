@@ -6,6 +6,26 @@ use Google\Cloud\Storage\StorageClient;
 use Google\Cloud\Core\Timestamp;
 use Google\Cloud\Firestore\FirestoreClient;
 
+// Get a reference to Firestore and get the deathcount and image path
+$firestore = new FirestoreClient([
+  'keyFilePath' => './auth.json'
+]);
+$dcount = $firestore->collection('info')->document('info')->snapshot()
+  ->get('deathcount');
+$image = $firestore->collection('info')->document('info')->snapshot()
+  ->get('home_screen_image');
+
+// Get social media accounts
+$social_media_ref = $firestore->collection('socialmedia');
+$social_media = [];
+foreach($social_media_ref->documents() as $document) {
+	array_push($social_media, array(
+		"id" => $document->id(),
+		"name" => $document->get('name'),
+		"url" => $document->get('url')
+    ));
+}
+
 // Get a reference to Storage and get all the PDFs
 $storage = new StorageClient([
   'keyFilePath' => './auth.json'
@@ -17,25 +37,9 @@ foreach ($storage->buckets() as $bucket) {
       array_push($pdfs, array($object->name(),
         $object->signedURL(new Timestamp(new DateTime('tomorrow')))));
     }
+    if ($object->name() === $image)
+      $image_URL = $object->signedURL(new Timestamp(new DateTime('tomorrow')));
   }
-}
-
-// Get a reference to Firestore and get the deathcount
-$firestore = new FirestoreClient([
-  'keyFilePath' => './auth.json'
-]);
-$dcount = $firestore->collection('info')->document('info')->snapshot()
-->get('deathcount');
-
-// Get social media accounts
-$social_media_ref = $firestore->collection('socialmedia');
-$social_media = [];
-foreach($social_media_ref->documents() as $document) {
-	array_push($social_media, array(
-		"id" => $document->id(),
-		"name" => $document->get('name'),
-		"url" => $document->get('url')
-    ));
 }
 ?>
 
@@ -94,7 +98,11 @@ foreach($social_media_ref->documents() as $document) {
             </div>
 
             <div class="col">
-                <img src="dummy.png" style="width:500px; height:300px;">
+<?php
+echo '<img src="' . $image_URL . '" style="width:500px; height:300px;">'
+  . PHP_EOL;
+//echo '<p>' . $image . '</p>' . PHP_EOL;
+?>
             </div>
         </div>
 
