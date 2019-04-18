@@ -122,6 +122,10 @@ foreach($doctypes_ref->documents() as $document) {
 					?>
 				</map>
 			</div> <!-- col 2 -->
+
+			<canvas id="example" width="200" height="60"></canvas>
+			<div id="status"></div>
+			
 		</div> <!-- row -->
 	</div> <!-- container -->
 </body>
