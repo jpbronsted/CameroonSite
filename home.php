@@ -26,6 +26,17 @@ $firestore = new FirestoreClient([
 ]);
 $dcount = $firestore->collection('info')->document('info')->snapshot()
 ->get('deathcount');
+
+// Get social media accounts
+$social_media_ref = $firestore->collection('socialmedia');
+$social_media = [];
+foreach($social_media_ref->documents() as $document) {
+	array_push($social_media, array(
+		"id" => $document->id(),
+		"name" => $document->get('name'),
+		"url" => $document->get('url')
+    ));
+}
 ?>
 
 <!DOCTYPE html>
@@ -53,6 +64,17 @@ $dcount = $firestore->collection('info')->document('info')->snapshot()
                 echo "<button type=\"button\" class=\"btn btn-outline-danger\">Death Count : " . $dcount .
                 "</button>";
                 ?>
+
+                <br>
+
+				<?php
+				foreach($social_media as $account) {
+                    $name = $account['name'];
+                    $url = $account['url'];
+
+                    echo "<a class='btn btn-outline-primary' href=$url>$name</a>";
+				}
+				?>
 
             </div>
         </div>
