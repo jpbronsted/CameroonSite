@@ -20,17 +20,6 @@ $type = isset($_REQUEST['type']) ? $_REQUEST['type'] : 'all';
 if ($type === '')
     $type = 'all';
 
-// Get the list of counties and their image map data from the database
-$counties = [];
-foreach($counties_ref->documents() as $document) {
-	array_push($counties, array(
-		"name" => $document->id(),
-		"x" => (float) $document->get('x'),
-		"y" => (float) $document->get('y'),
-		"radius" => (float) $document->get('radius')
-	));
-}
-
 // Doctype content for sortying by type
 $doctypes_ref = $firestore->collection('doctypes');
 
@@ -108,19 +97,18 @@ foreach($doctypes_ref->documents() as $document) {
 
 			<br>
 
-			<div class="col">
+      <div class="col">
 				<img id='map' src='map.jpg' usemap='#bmap' />
-				<map name='bmap'>
-					<?php
-					foreach($counties as $county) {
-						$x = $county["x"] * 458;
-						$y = $county["y"] * 547;
-						$radius = $county["radius"] * 547;
-						echo "<area shape=\"circle\" coords=\"" . $x . "," . $y . "," . $radius
-						. "\" href=\"results.php?province=" . $county["name"] . "&type=all\" />";
+        <map name='bmap'>
+<?php
+          // Set up the polygon areas for each county on the map
+					foreach($counties_ref->documents() as $county) {
+            echo '<area shape="polygon" coords="' . $county->get('coords')
+              . '" href="results.php?province=' . $county->id()
+              . '&type=all" style="outline: none;" />';
 					}
-					?>
-				</map>
+?>
+        </map>
 			</div> <!-- col 2 -->
 
 			<canvas id="example" width="200" height="60"></canvas>
