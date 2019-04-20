@@ -41,7 +41,7 @@ Finally, navigate to the website install directory (i.e., the directory containi
 
 The server can be started from the command-line using `php7.0 -S localhost:13000`, for example, for local testing/emulation.
 
-# Future Work
+## Future Work
 
 We included several blank pages in the website labeled “under construction.” These are included so that future work may be based in those pages.
 
