@@ -47,6 +47,8 @@ We included several blank pages in the website labeled “under construction.”
 
 # Android
 
+The Android GitHub repository can be found [here](https://github.com/DoctorPepper/CameroonApp).
+
 ## Release Notes (v1.0)
 
 The application has the following features:
