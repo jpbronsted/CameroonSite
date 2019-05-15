@@ -1,38 +1,8 @@
-<?php
-if (!extension_loaded('grpc')) {
-  dl('grpc.so');
-}
-$page = 'browse';
-require __DIR__ . '/vendor/autoload.php';
-use Google\Cloud\Firestore\FirestoreClient;
-
-// Generate database/storage references
-$firestore = new FirestoreClient([
-  'keyFilePath' => './auth.json'
-]);
-$counties_ref = $firestore->collection('counties');
-
-// Generate page-level attributes
-$province = isset($_REQUEST['province']) ? $_REQUEST['province'] : 'all';
-if ($province === '')
-  $province = 'all';
-$type = isset($_REQUEST['type']) ? $_REQUEST['type'] : 'all';
-if ($type === '')
-  $type = 'all';
-
-// Doctype content for sortying by type
-$doctypes_ref = $firestore->collection('doctypes');
-
-$doctypes = ["Sort By Document"];
-foreach($doctypes_ref->documents() as $document)
-  array_push($doctypes, $document->id());
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
   <title>Ambazonian Genocide Watch</title>
-  <?php include 'header.php'; ?>
+  <?php $page = 'browse'; include 'header.php'; ?>
   <script src='submit.js'></script>
 
   <!-- Bootstrap core JS & CSS -->
@@ -45,6 +15,20 @@ foreach($doctypes_ref->documents() as $document)
 
   <!-- CSS -->
   <link rel='stylesheet' href='style.css' />
+
+  <!-- Firebase API -->
+  <script
+      src='https://www.gstatic.com/firebasejs/6.0.2/firebase-app.js'>
+  </script>
+  <script
+      src='https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js'>
+  </script>
+  <script
+      src='https://www.gstatic.com/firebasejs/6.0.2/firebase-storage.js'>
+  </script>
+
+  <!-- Media rendering -->
+  <script src='browse.js'></script>
 </head>
 <body>
   <div class='container'>
@@ -70,20 +54,13 @@ foreach($doctypes_ref->documents() as $document)
 
         <!-- SELECT BY DOCUMENTS -->
         <form action='results.php' action='get'>
-          <input type="hidden" value="<?php echo $province; ?>" name="province" id="prov-selector" />
-          <input type="hidden" value="<?php echo $type; ?>" name="type" id="type-selector"/>
-          <select class="form-control" id='doctype' onchange="submit_form(value, 'type-selector',
-          this.form);">
-<?php
-// Initialize the drop-down list with the preselected item active
-foreach($doctypes as $doctype) {
-  if ($doctype === $type)
-    echo '<option selected ';
-  else
-    echo '<option ';
-  echo 'value="' . $doctype . '">' . $doctype . '</option>' . PHP_EOL;
-}
-?>
+          <input type="hidden" value="" name="province"
+              id="prov-selector" />
+          <input type="hidden" value="" name="type"
+              id="type-selector" />
+          <select class="form-control" id='doctype'
+              onchange="submit_form(value, 'type-selector', this.form);">
+            <option selected value='all'>Sort By Document</option>
           </select>
         </form>
 
@@ -93,16 +70,7 @@ foreach($doctypes as $doctype) {
 
       <div class="col">
         <img id='map' src='map.jpg' usemap='#bmap' />
-        <map name='bmap'>
-<?php
-// Set up the polygon areas for each county on the map
-foreach($counties_ref->documents() as $county) {
-  echo '<area shape="polygon" coords="' . $county->get('coords')
-    . '" href="results.php?province=' . $county->id()
-    . '&type=all" style="outline: none;" />';
-}
-?>
-        </map>
+        <map id='bmap' name='bmap'></map>
       </div> <!-- col 2 -->
     </div> <!-- row -->
   </div> <!-- container -->
