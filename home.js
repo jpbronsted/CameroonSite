@@ -34,6 +34,7 @@ firestore.collection('info').doc('info').get().then(function(doc) {
       node.classList.add('btn-outline-dark');
       node.href = url;
       node.innerHTML = pdf;
+      node.target = '_blank';
       node.download = pdf;
       document.getElementById('pdf-container').appendChild(node);
     });
@@ -50,6 +51,7 @@ firestore.collection('socialmedia').get().then(function(docs) {
     node.classList.add('btn');
     node.classList.add('btn-outline-dark');
     node.href = data.url;
+    node.target = '_blank';
     node.innerHTML = data.name;
     document.getElementById('social-media-container').appendChild(node);
   });
