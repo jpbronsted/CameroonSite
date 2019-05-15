@@ -33,7 +33,6 @@ firestore.collection('counties').get().then(function(docs) {
       submit_form(doc.id, 'prov-selector',
           document.getElementById('results-form'));
     }
-    console.log(node.onclick);
     node.style = 'outline: none;';
     document.getElementById('bmap').appendChild(node);
   });
