@@ -53,7 +53,7 @@
         </div>
 
         <!-- SELECT BY DOCUMENTS -->
-        <form action='results.php' action='get'>
+        <form id='results-form' action='results.php' method='post'>
           <input type="hidden" value="" name="province"
               id="prov-selector" />
           <input type="hidden" value="" name="type"

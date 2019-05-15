@@ -29,7 +29,11 @@ firestore.collection('counties').get().then(function(docs) {
     let node = document.createElement('AREA');
     node.shape = 'polygon';
     node.coords = doc.data().coords;
-    node.href = 'results.php?province=' + doc.id + '&type=all';
+    node.onclick = function() {
+      submit_form(doc.id, 'prov-selector',
+          document.getElementById('results-form'));
+    }
+    console.log(node.onclick);
     node.style = 'outline: none;';
     document.getElementById('bmap').appendChild(node);
   });
