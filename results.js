@@ -27,9 +27,14 @@ function genUI(path, url) {
   }
   if (!(genUI.counter % 3)) {
     genUI.currRow = document.createElement('DIV');
+    genUI.currRow.classList.add('row');
     document.getElementById('ui-container').appendChild(genUI.currRow);
   }
-  genUI.currRow.appendChild(node);
+  var currCol = document.createElement('DIV');
+  currCol.classList.add('col-sm');
+  currCol.style.textAlign = 'center';
+  currCol.appendChild(node);
+  genUI.currRow.appendChild(currCol);
   genUI.counter++;
 }
 
