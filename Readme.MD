@@ -2,6 +2,11 @@
 
 An Android-web dual application allowing bystanders to genocide and to safely upload documentation of crimes against humanity. Made in solidarity with the victims of the ongoing genocide in Ambazonia, and in loving memory of Sam Soya.
 
+Please note that the version found in the master branch is the original submission. The contents of the
+'strip-dependencies' branch are a refactored version of the website that does not rely on any PHP extensions. This
+version was created due to the lack of suitable PHP server hosts, as all that we tried with could not run the
+required extensions.
+
 # Website
 
 ## Release Notes (v1.0)
